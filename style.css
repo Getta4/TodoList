@@ -1,0 +1,25 @@
+html{
+    text-align: center;
+}
+#taskCanvas{
+    width: 60%;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#taskList {
+    
+    list-style-type: none;
+    padding-left: 10%;
+    text-align: left;
+    font-size: 20px;
+}
+#darkMode{
+    background-color: #222222;
+    color: white;
+}
+#lightMode{
+    background-color: antiquewhite;
+    color: black;
+}
