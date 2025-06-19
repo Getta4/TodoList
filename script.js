@@ -37,9 +37,7 @@ function loadTasksFromCookie() {
 
 // タスク追加時にCookieへ保存
 function addTask(task){
-    const taskItem = document.createElement("li");
-    taskItem.textContent = task;
-    taskList.appendChild(taskItem);
+    renderTask(task);
 
     // 既存タスクを取得して追加
     const tasks = loadTasksFromCookie();
@@ -47,8 +45,15 @@ function addTask(task){
     saveTasksToCookie(tasks);
 }
 
+// タスクをリストに表示するだけ（Cookie保存しない）
+function renderTask(task) {
+    const taskItem = document.createElement("li");
+    taskItem.textContent = task;
+    taskList.appendChild(taskItem);
+}
+
 // ページ読み込み時にCookieから復元
 window.addEventListener("DOMContentLoaded", () => {
     const tasks = loadTasksFromCookie();
-    tasks.forEach(addTask);
+    tasks.forEach(renderTask); // ← addTaskではなくrenderTaskを使う
 });
