@@ -13,9 +13,10 @@ taskSubmit.addEventListener("click",function(e){
         addTask(task);
         taskContent.value = "";
     } else {
-        alert("Please input task")
+        alert("Please input task");
     }
-})
+});
+
 
 // タスクをCookieに保存
 function saveTasksToCookie(tasks) {
@@ -47,8 +48,25 @@ function addTask(task){
 
 // タスクをリストに表示するだけ（Cookie保存しない）
 function renderTask(task) {
+    //要素の設定
     const taskItem = document.createElement("li");
-    taskItem.textContent = task;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    const textNode = document.createTextNode(task);
+
+    taskItem.appendChild(checkbox);
+    taskItem.appendChild(textNode);
+    
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            taskItem.style.textDecoration = "line-through";
+        } else {
+            taskItem.style.textDecoration = "none";
+        }
+    });
+
     taskList.appendChild(taskItem);
 }
 
